@@ -15,7 +15,7 @@ const app = () => {
         <Link href="/contact" style={{ marginHorizontal: 'auto' }} asChild >
           <Pressable style={styles.buttonstyle}>
             <Text style={styles.buttonText}>
-              Contact Us
+              Order coffee
             </Text>
           </Pressable>
         </Link>
