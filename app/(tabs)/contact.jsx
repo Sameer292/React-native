@@ -16,7 +16,7 @@ function contact() {
   function addListhandler() {
 
     if (enteredName.length === 0) {
-      Alert.alert('Please enter the name of the coffee');
+      Alert.alert('Please enter the name of the coffee please');
       return;
     }
     setlistOfCoffee([...listOfCoffee, enteredName]);
