@@ -1,6 +1,6 @@
 import { Link } from 'expo-router'
 import React, { Component, useState } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { FlatList, TouchableOpacity } from 'react-native'
 import { Text, View, StyleSheet, Button, Pressable, Alert, TextInput } from 'react-native'
 
 function contact() {
@@ -19,14 +19,12 @@ function contact() {
       Alert.alert('Please enter the name of the coffee please');
       return;
     }
-    setlistOfCoffee([...listOfCoffee, enteredName]);
+    setlistOfCoffee([...listOfCoffee, { text:enteredName, key:Math.random().toString() }]);
     // setlistOfCoffee([])
     setenteredName('')
 
   }
 
-
-  // render() {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -40,14 +38,9 @@ function contact() {
           Your list of coffee are...
         </Text>
 
-        {
-
-          listOfCoffee.map((coffee) => {
-            return <Text style={styles.coffee} key={coffee} >{coffee}</Text>
-          })
-
-        }
-
+        <FlatList data={listOfCoffee} renderItem={
+          (itemData) => <Text style={styles.coffee}>{itemData.item.text}</Text>
+          } />
 
       </View>
     </View>
@@ -113,13 +106,13 @@ const styles = StyleSheet.create({
   },
   coffee: {
     color: '#f3dadf',
+    // color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
     margin: 6,
     paddingVertical: 10,
     borderRadius: 8,
     backgroundColor: '#413B61',
-    // color: 'white',
     paddingLeft: 20,
   }
 
