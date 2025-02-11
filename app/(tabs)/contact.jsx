@@ -19,7 +19,9 @@ function contact() {
       Alert.alert('Please enter the name of the coffee please');
       return;
     }
-    setlistOfCoffee([...listOfCoffee, { text:enteredName, key:Math.random().toString() }]);
+    //Just use key instead. it's much easier setlistOfCoffee([...listOfCoffee, { text:enteredName, key:Math.random().toString() }]);
+    setlistOfCoffee([...listOfCoffee, { text:enteredName, id:Math.random().toString() }]);
+    //The id is put for example
     // setlistOfCoffee([])
     setenteredName('')
 
@@ -40,7 +42,10 @@ function contact() {
 
         <FlatList data={listOfCoffee} renderItem={
           (itemData) => <Text style={styles.coffee}>{itemData.item.text}</Text>
-          } />
+          }
+          keyExtractor={(item,index) => item.id}
+           />
+           {/* The keyExtractor is used to identify the unique key of the item use key in the data object instead, makes it easier  */}
 
       </View>
     </View>
